@@ -43,11 +43,10 @@
 <body class="bg-slate-50 text-slate-800 antialiased selection:bg-amber-200 selection:text-navy-900">
 
   <!-- =====================================================================
-       SUPABASE CONFIGURATION (PASTE YOUR TWO KEYS BELOW WHEN READY)
-       Leave them empty to run immediately with built-in local storage!
+       SUPABASE CONFIGURATION
   ====================================================================== -->
   <script>
-    const SUPABASE_URL = "Https://jjdsmmpbfsougpckgbvz.supabase.co";
+    const SUPABASE_URL = "https://jjdsmmpbfsougpckgbvz.supabase.co";
     const SUPABASE_ANON_KEY = "sb_publishable_bxcVjSHM0qGmmedG4aYREg_VVc6KXd-";
   </script>
 
@@ -307,9 +306,7 @@
     </div>
   </footer>
 
-  <!-- =====================================================================
-       ARTICLE FULL-VIEW READER MODAL
-  ====================================================================== -->
+  <!-- ARTICLE FULL-VIEW READER MODAL -->
   <div id="articleModal" class="hidden fixed inset-0 z-50 bg-navy-950/80 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[88vh] overflow-y-auto shadow-2xl border border-slate-200">
       <div class="sticky top-0 bg-white border-b border-slate-200 px-6 py-4 flex items-center justify-between">
@@ -324,9 +321,7 @@
     </div>
   </div>
 
-  <!-- =====================================================================
-       EXCLUSIVE EDITOR-IN-CHIEF PASSCODE MODAL
-  ====================================================================== -->
+  <!-- EDITOR-IN-CHIEF PASSCODE MODAL -->
   <div id="editorGateModal" class="hidden fixed inset-0 z-50 bg-navy-950/80 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="bg-white rounded-2xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-slate-200">
       <div class="flex items-center justify-between mb-4">
@@ -353,12 +348,9 @@
     </div>
   </div>
 
-  <!-- =====================================================================
-       ADMIN / EDITOR-IN-CHIEF CONTROL DRAWER (ONLY YOU CAN ACCESS)
-  ====================================================================== -->
+  <!-- ADMIN CONTROL DRAWER -->
   <div id="adminDrawer" class="hidden fixed inset-0 z-50 bg-navy-950/75 backdrop-blur-sm flex justify-end">
     <div class="bg-white w-full max-w-2xl h-full overflow-y-auto shadow-2xl flex flex-col">
-      <!-- Drawer Header -->
       <div class="bg-navy-900 text-white px-6 py-5 flex items-center justify-between sticky top-0 z-10">
         <div>
           <span class="text-[11px] uppercase tracking-widest text-amber-400 font-bold">Administrator Control</span>
@@ -374,24 +366,14 @@
         </div>
       </div>
 
-      <!-- Admin Tabs -->
       <div class="flex border-b border-slate-200 bg-slate-50 px-4 pt-3 gap-2 overflow-x-auto">
-        <button onclick="switchAdminTab('tabArticles')" class="admin-tab-btn px-4 py-2.5 text-xs font-bold rounded-t-lg bg-white border-t border-x border-slate-200 text-navy-900">
-          + Articles
-        </button>
-        <button onclick="switchAdminTab('tabMembers')" class="admin-tab-btn px-4 py-2.5 text-xs font-bold rounded-t-lg text-slate-600 hover:text-navy-900">
-          + Classmates
-        </button>
-        <button onclick="switchAdminTab('tabGallery')" class="admin-tab-btn px-4 py-2.5 text-xs font-bold rounded-t-lg text-slate-600 hover:text-navy-900">
-          + Photos
-        </button>
-        <button onclick="switchAdminTab('tabSettings')" class="admin-tab-btn px-4 py-2.5 text-xs font-bold rounded-t-lg text-slate-600 hover:text-navy-900">
-          Banner & Security
-        </button>
+        <button onclick="switchAdminTab('tabArticles')" class="admin-tab-btn px-4 py-2.5 text-xs font-bold rounded-t-lg bg-white border-t border-x border-slate-200 text-navy-900">+ Articles</button>
+        <button onclick="switchAdminTab('tabMembers')" class="admin-tab-btn px-4 py-2.5 text-xs font-bold rounded-t-lg text-slate-600 hover:text-navy-900">+ Classmates</button>
+        <button onclick="switchAdminTab('tabGallery')" class="admin-tab-btn px-4 py-2.5 text-xs font-bold rounded-t-lg text-slate-600 hover:text-navy-900">+ Photos</button>
+        <button onclick="switchAdminTab('tabSettings')" class="admin-tab-btn px-4 py-2.5 text-xs font-bold rounded-t-lg text-slate-600 hover:text-navy-900">Banner & Security</button>
       </div>
 
       <div class="p-6 space-y-8 flex-1">
-        <!-- TAB 1: MANAGE ARTICLES -->
         <div id="tabArticles" class="admin-tab-panel space-y-6">
           <form onsubmit="addArticle(event)" class="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-4">
             <h4 class="font-bold text-navy-900 text-base">Publish New Magazine Article</h4>
@@ -403,95 +385,74 @@
                 <option value="Spotlight">Spotlight</option>
               </select>
             </div>
-            <input type="text" id="artAuthor" required placeholder="Author Name (e.g., Editorial Board)" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm" />
-            <input type="text" id="artExcerpt" required placeholder="Short summary (1-2 sentences)" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm" />
-            <textarea id="artContent" rows="4" required placeholder="Write the full magazine story here..." class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm"></textarea>
-            <button type="submit" class="px-5 py-2.5 rounded-lg bg-navy-900 text-amber-300 font-bold text-xs uppercase tracking-wider hover:bg-navy-850">
-              Publish to Magazine
-            </button>
+            <input type="text" id="artAuthor" required placeholder="Author Name" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm" />
+            <input type="text" id="artExcerpt" required placeholder="Short summary" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm" />
+            <textarea id="artContent" rows="4" required placeholder="Full story content..." class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm"></textarea>
+            <button type="submit" class="px-5 py-2.5 rounded-lg bg-navy-900 text-amber-300 font-bold text-xs uppercase tracking-wider">Publish to Magazine</button>
           </form>
-
           <div>
-            <h4 class="font-bold text-navy-900 text-sm mb-3">Published Articles (Click Delete to Remove)</h4>
+            <h4 class="font-bold text-navy-900 text-sm mb-3">Published Articles</h4>
             <div id="adminArticlesList" class="space-y-2.5"></div>
           </div>
         </div>
 
-        <!-- TAB 2: MANAGE CLASSMATES -->
         <div id="tabMembers" class="admin-tab-panel hidden space-y-6">
           <form onsubmit="addMember(event)" class="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-4">
             <h4 class="font-bold text-navy-900 text-base">Add 2023 Set Classmate</h4>
             <div class="grid sm:grid-cols-2 gap-3">
               <input type="text" id="memName" required placeholder="Full Name" class="px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm" />
-              <input type="text" id="memNickname" placeholder="School Nickname (Optional)" class="px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm" />
+              <input type="text" id="memNickname" placeholder="Nickname (Optional)" class="px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm" />
             </div>
             <div class="grid sm:grid-cols-2 gap-3">
-              <input type="text" id="memHouse" required placeholder="Hostel / House (e.g., Red House)" class="px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm" />
-              <input type="text" id="memRole" required placeholder="School Post / Role (e.g., Head Boy)" class="px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm" />
+              <input type="text" id="memHouse" required placeholder="House (e.g. Red House)" class="px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm" />
+              <input type="text" id="memRole" required placeholder="Role (e.g. Head Boy)" class="px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm" />
             </div>
             <input type="text" id="memInstitution" required placeholder="Current University / Career" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm" />
-            <input type="text" id="memQuote" required placeholder="Favorite Secondary School Quote or Memory" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm" />
-            <button type="submit" class="px-5 py-2.5 rounded-lg bg-navy-900 text-amber-300 font-bold text-xs uppercase tracking-wider hover:bg-navy-850">
-              Add to Directory
-            </button>
+            <input type="text" id="memQuote" required placeholder="Favorite Quote / Memory" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm" />
+            <button type="submit" class="px-5 py-2.5 rounded-lg bg-navy-900 text-amber-300 font-bold text-xs uppercase tracking-wider">Add to Directory</button>
           </form>
-
           <div>
             <h4 class="font-bold text-navy-900 text-sm mb-3">Directory Roll Call</h4>
             <div id="adminMembersList" class="space-y-2.5"></div>
           </div>
         </div>
 
-        <!-- TAB 3: MANAGE GALLERY -->
         <div id="tabGallery" class="admin-tab-panel hidden space-y-6">
           <form onsubmit="addPhoto(event)" class="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-4">
             <h4 class="font-bold text-navy-900 text-base">Add Memory Photo</h4>
-            <input type="text" id="photoCaption" required placeholder="Photo Caption (e.g., 2023 Set Valedictory Day)" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm" />
+            <input type="text" id="photoCaption" required placeholder="Photo Caption" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm" />
             <input type="text" id="photoYear" value="2023 Set Archive" required placeholder="Tag / Year" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm" />
             <div>
-              <label class="block text-xs font-bold text-slate-600 mb-1">Paste Image URL or Upload from Device:</label>
-              <input type="url" id="photoUrlInput" placeholder="https://example.com/photo.jpg" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm mb-2" />
+              <label class="block text-xs font-bold text-slate-600 mb-1">Image URL or File Upload:</label>
+              <input type="url" id="photoUrlInput" placeholder="https://..." class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm mb-2" />
               <input type="file" id="photoFileInput" accept="image/*" class="text-xs text-slate-600" />
             </div>
-            <button type="submit" class="px-5 py-2.5 rounded-lg bg-navy-900 text-amber-300 font-bold text-xs uppercase tracking-wider hover:bg-navy-850">
-              Add Photo to Gallery
-            </button>
+            <button type="submit" class="px-5 py-2.5 rounded-lg bg-navy-900 text-amber-300 font-bold text-xs uppercase tracking-wider">Add Photo</button>
           </form>
-
           <div>
             <h4 class="font-bold text-navy-900 text-sm mb-3">Gallery Items</h4>
             <div id="adminGalleryList" class="space-y-2.5"></div>
           </div>
         </div>
 
-        <!-- TAB 4: BANNER & PASSCODE SECURITY -->
         <div id="tabSettings" class="admin-tab-panel hidden space-y-6">
           <form onsubmit="updateHeroBanner(event)" class="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-4">
-            <h4 class="font-bold text-navy-900 text-base">Update Homepage Welcome Banner</h4>
+            <h4 class="font-bold text-navy-900 text-base">Update Welcome Banner</h4>
             <input type="text" id="editHeroTitle" required class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm" />
             <textarea id="editHeroSubtitle" rows="3" required class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm"></textarea>
-            <button type="submit" class="px-5 py-2.5 rounded-lg bg-navy-900 text-amber-300 font-bold text-xs uppercase tracking-wider">
-              Save Banner Text
-            </button>
+            <button type="submit" class="px-5 py-2.5 rounded-lg bg-navy-900 text-amber-300 font-bold text-xs uppercase tracking-wider">Save Banner</button>
           </form>
-
           <form onsubmit="changeEditorPasscode(event)" class="bg-amber-50 p-5 rounded-xl border border-amber-200 space-y-4">
-            <h4 class="font-bold text-navy-900 text-base">Change Your Private Editor Passcode</h4>
-            <input type="text" id="newPasscodeInput" required minlength="4" placeholder="Enter new private passcode" class="w-full px-3.5 py-2.5 rounded-lg border border-amber-300 bg-white text-sm" />
-            <button type="submit" class="px-5 py-2.5 rounded-lg bg-amber-600 text-white font-bold text-xs uppercase tracking-wider hover:bg-amber-700">
-              Update Passcode
-            </button>
+            <h4 class="font-bold text-navy-900 text-base">Change Editor Passcode</h4>
+            <input type="text" id="newPasscodeInput" required minlength="4" placeholder="New passcode" class="w-full px-3.5 py-2.5 rounded-lg border border-amber-300 bg-white text-sm" />
+            <button type="submit" class="px-5 py-2.5 rounded-lg bg-amber-600 text-white font-bold text-xs uppercase tracking-wider">Update Passcode</button>
           </form>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- =====================================================================
-       APPLICATION LOGIC (SUPABASE + LOCAL FALLBACK)
-  ====================================================================== -->
   <script>
-    // Initialize Supabase if keys are provided
     let supabaseClient = null;
     if (SUPABASE_URL && SUPABASE_ANON_KEY && window.supabase) {
       supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
@@ -510,11 +471,7 @@
           category: 'Reunion',
           author: 'Reunion Organizing Committee',
           excerpt: 'As we gather once again under the banner of Kuranga Old Boys, we celebrate the bonds that shaped our character and future.',
-          content: 'Dear Brothers of the 2023 Set,
-
-It feels like only yesterday we walked the corridors of Special School Kuranga, preparing for our final examinations and dreaming of the paths ahead. Today, we reunite not just to reminisce about our boarding house days, morning assemblies, and inter-house competitions, but to strengthen a lifelong network of support.
-
-This digital magazine belongs to every member of our set. Share it freely with classmates near and far!'
+          content: 'Dear Brothers of the 2023 Set,\n\nIt feels like only yesterday we walked the corridors of Special School Kuranga, preparing for our final examinations and dreaming of the paths ahead. Today, we reunite not just to reminisce about our boarding house days, morning assemblies, and inter-house competitions, but to strengthen a lifelong network of support.\n\nThis digital magazine belongs to every member of our set. Share it freely with classmates near and far!'
         },
         {
           id: 'art-2',
@@ -573,7 +530,6 @@ This digital magazine belongs to every member of our set. Share it freely with c
       }
     }
 
-    // RENDER FUNCTIONS
     function renderAll() {
       document.getElementById('heroTitle').innerHTML = state.heroTitle;
       document.getElementById('heroSubtitle').textContent = state.heroSubtitle;
@@ -593,7 +549,7 @@ This digital magazine belongs to every member of our set. Share it freely with c
         title: 'Welcome to Kuranga 2023 Set Magazine',
         category: 'Editorial',
         author: 'Editor-in-Chief',
-        content: 'No articles published yet. Use Editor Access to add your first story!'
+        content: 'No articles published yet.'
       }];
       if (currentReaderPage >= pages.length) currentReaderPage = 0;
       const page = pages[currentReaderPage];
@@ -606,9 +562,7 @@ This digital magazine belongs to every member of our set. Share it freely with c
             <span>By ${page.author}</span>
           </div>
           <h3 class="text-2xl sm:text-3xl font-bold text-navy-900 mb-5 leading-tight">${page.title}</h3>
-          <div class="text-slate-700 leading-relaxed space-y-4 text-sm sm:text-base whitespace-pre-line">
-            ${page.content}
-          </div>
+          <div class="text-slate-700 leading-relaxed space-y-4 text-sm sm:text-base whitespace-pre-line">${page.content}</div>
         </div>
         <div class="pt-8 mt-8 border-t border-slate-200 flex items-center justify-between text-xs text-slate-400">
           <span>Kuranga Old Boys 2023 Set • Special School</span>
@@ -648,10 +602,7 @@ This digital magazine belongs to every member of our set. Share it freely with c
     }
 
     function renderArticles() {
-      const filtered = currentFilter === 'All'
-        ? state.articles
-        : state.articles.filter(a => a.category === currentFilter);
-
+      const filtered = currentFilter === 'All' ? state.articles : state.articles.filter(a => a.category === currentFilter);
       document.getElementById('articlesGrid').innerHTML = filtered.map(art => `
         <article class="bg-slate-50 rounded-2xl border border-slate-200 p-6 flex flex-col justify-between hover:shadow-lg transition">
           <div>
@@ -663,9 +614,7 @@ This digital magazine belongs to every member of our set. Share it freely with c
             <p class="text-sm text-slate-600 leading-relaxed">${art.excerpt}</p>
           </div>
           <div class="pt-5 mt-5 border-t border-slate-200">
-            <button onclick="openArticleModal('${art.id}')" class="text-sm font-bold text-navy-900 hover:text-amber-600 transition">
-              Read Full Story →
-            </button>
+            <button onclick="openArticleModal('${art.id}')" class="text-sm font-bold text-navy-900 hover:text-amber-600 transition">Read Full Story →</button>
           </div>
         </article>
       `).join('');
@@ -695,9 +644,7 @@ This digital magazine belongs to every member of our set. Share it freely with c
             <p><strong class="text-slate-800">School Role:</strong> ${m.role}</p>
             <p><strong class="text-slate-800">Current Path:</strong> ${m.institution}</p>
           </div>
-          <blockquote class="text-xs italic text-slate-500 bg-slate-50 p-3 rounded-xl border-l-2 border-amber-400">
-            "${m.quote}"
-          </blockquote>
+          <blockquote class="text-xs italic text-slate-500 bg-slate-50 p-3 rounded-xl border-l-2 border-amber-400">"${m.quote}"</blockquote>
         </div>
       `).join('');
     }
@@ -716,10 +663,7 @@ This digital magazine belongs to every member of our set. Share it freely with c
       `).join('');
     }
 
-    // MODAL & NAVIGATION HELPERS
-    function toggleMobileMenu() {
-      document.getElementById('mobileMenu').classList.toggle('hidden');
-    }
+    function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('hidden'); }
 
     function openArticleModal(id) {
       const art = state.articles.find(a => a.id === id);
@@ -731,11 +675,8 @@ This digital magazine belongs to every member of our set. Share it freely with c
       document.getElementById('articleModal').classList.remove('hidden');
     }
 
-    function closeArticleModal() {
-      document.getElementById('articleModal').classList.add('hidden');
-    }
+    function closeArticleModal() { document.getElementById('articleModal').classList.add('hidden'); }
 
-    // EDITOR-IN-CHIEF SECURITY & CONTROLS
     function openEditorGate() {
       if (isEditorUnlocked) {
         openAdminDrawer();
@@ -746,9 +687,7 @@ This digital magazine belongs to every member of our set. Share it freely with c
       }
     }
 
-    function closeEditorGate() {
-      document.getElementById('editorGateModal').classList.add('hidden');
-    }
+    function closeEditorGate() { document.getElementById('editorGateModal').classList.add('hidden'); }
 
     function verifyEditorPasscode(e) {
       e.preventDefault();
@@ -770,9 +709,7 @@ This digital magazine belongs to every member of our set. Share it freely with c
       document.getElementById('adminDrawer').classList.remove('hidden');
     }
 
-    function closeAdminDrawer() {
-      document.getElementById('adminDrawer').classList.add('hidden');
-    }
+    function closeAdminDrawer() { document.getElementById('adminDrawer').classList.add('hidden'); }
 
     function lockEditorMode() {
       isEditorUnlocked = false;
@@ -789,21 +726,15 @@ This digital magazine belongs to every member of our set. Share it freely with c
     function renderAdminLists() {
       document.getElementById('adminArticlesList').innerHTML = state.articles.map(a => `
         <div class="flex items-center justify-between p-3 bg-white border border-slate-200 rounded-xl text-xs">
-          <div>
-            <p class="font-bold text-navy-900">${a.title}</p>
-            <p class="text-slate-500">${a.category} • ${a.author}</p>
-          </div>
-          <button onclick="deleteArticle('${a.id}')" class="px-2.5 py-1.5 rounded-lg bg-red-50 text-red-600 font-bold hover:bg-red-100">Delete</button>
+          <div><p class="font-bold text-navy-900">${a.title}</p><p class="text-slate-500">${a.category} • ${a.author}</p></div>
+          <button onclick="deleteArticle('${a.id}')" class="px-2.5 py-1.5 rounded-lg bg-red-50 text-red-600 font-bold">Delete</button>
         </div>
       `).join('');
 
       document.getElementById('adminMembersList').innerHTML = state.members.map(m => `
         <div class="flex items-center justify-between p-3 bg-white border border-slate-200 rounded-xl text-xs">
-          <div>
-            <p class="font-bold text-navy-900">${m.full_name} (${m.house})</p>
-            <p class="text-slate-500">${m.role} • ${m.institution}</p>
-          </div>
-          <button onclick="deleteMember('${m.id}')" class="px-2.5 py-1.5 rounded-lg bg-red-50 text-red-600 font-bold hover:bg-red-100">Remove</button>
+          <div><p class="font-bold text-navy-900">${m.full_name} (${m.house})</p><p class="text-slate-500">${m.role} • ${m.institution}</p></div>
+          <button onclick="deleteMember('${m.id}')" class="px-2.5 py-1.5 rounded-lg bg-red-50 text-red-600 font-bold">Remove</button>
         </div>
       `).join('');
 
@@ -811,17 +742,13 @@ This digital magazine belongs to every member of our set. Share it freely with c
         <div class="flex items-center justify-between p-3 bg-white border border-slate-200 rounded-xl text-xs">
           <div class="flex items-center gap-3">
             <img src="${g.image_url}" class="w-10 h-10 rounded object-cover" />
-            <div>
-              <p class="font-bold text-navy-900">${g.caption}</p>
-              <p class="text-slate-500">${g.year_tag}</p>
-            </div>
+            <div><p class="font-bold text-navy-900">${g.caption}</p><p class="text-slate-500">${g.year_tag}</p></div>
           </div>
-          <button onclick="deletePhoto('${g.id}')" class="px-2.5 py-1.5 rounded-lg bg-red-50 text-red-600 font-bold hover:bg-red-100">Remove</button>
+          <button onclick="deletePhoto('${g.id}')" class="px-2.5 py-1.5 rounded-lg bg-red-50 text-red-600 font-bold">Remove</button>
         </div>
       `).join('');
     }
 
-    // ADMIN CRUD OPERATIONS
     async function addArticle(e) {
       e.preventDefault();
       const newArt = {
@@ -833,9 +760,7 @@ This digital magazine belongs to every member of our set. Share it freely with c
         content: document.getElementById('artContent').value.trim()
       };
       if (supabaseClient) {
-        const { data } = await supabaseClient.from('articles').insert([{
-          title: newArt.title, category: newArt.category, author: newArt.author, excerpt: newArt.excerpt, content: newArt.content
-        }]).select();
+        const { data } = await supabaseClient.from('articles').insert([{ title: newArt.title, category: newArt.category, author: newArt.author, excerpt: newArt.excerpt, content: newArt.content }]).select();
         if (data && data[0]) newArt.id = data[0].id;
       }
       state.articles.unshift(newArt);
@@ -861,9 +786,7 @@ This digital magazine belongs to every member of our set. Share it freely with c
         quote: document.getElementById('memQuote').value.trim()
       };
       if (supabaseClient) {
-        const { data } = await supabaseClient.from('classmates').insert([{
-          full_name: newMem.full_name, nickname: newMem.nickname, house: newMem.house, role: newMem.role, institution: newMem.institution, quote: newMem.quote
-        }]).select();
+        const { data } = await supabaseClient.from('classmates').insert([{ full_name: newMem.full_name, nickname: newMem.nickname, house: newMem.house, role: newMem.role, institution: newMem.institution, quote: newMem.quote }]).select();
         if (data && data[0]) newMem.id = data[0].id;
       }
       state.members.push(newMem);
@@ -915,7 +838,7 @@ This digital magazine belongs to every member of our set. Share it freely with c
       state.heroTitle = document.getElementById('editHeroTitle').value.trim();
       state.heroSubtitle = document.getElementById('editHeroSubtitle').value.trim();
       saveLocalState();
-      alert('Homepage banner updated!');
+      alert('Banner updated!');
     }
 
     function changeEditorPasscode(e) {
@@ -925,11 +848,10 @@ This digital magazine belongs to every member of our set. Share it freely with c
         state.passcode = nextPass;
         saveLocalState();
         e.target.reset();
-        alert('Editor passcode updated! Keep it safe.');
+        alert('Passcode updated!');
       }
     }
 
-    // Boot application
     renderAll();
     loadCloudDataIfConfigured();
   </script>
